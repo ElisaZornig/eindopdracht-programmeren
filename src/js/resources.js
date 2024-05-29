@@ -5,18 +5,18 @@ const Resources = {
     Fish: new ImageSource('images/fish.png'),
     Paper: new ImageSource('images/paper.png'),
     Background: new ImageSource('images/pixel.jpg'),
-    SpriteSheet: new ImageSource('src/assets/tileset/Modern tiles_Free/Characters_free/Adam_run_16x16.png'),
-    SpriteSheetPlayer2: new ImageSource('src/assets/tileset/Modern tiles_Free/Characters_free/Player2_run.png'),
-    SpriteSheetAlexPhone: new ImageSource('src/assets/tileset/Modern tiles_Free/Characters_free/Alex_phone_16x16.png'),
-    SpriteSheetAmeliaPhone: new ImageSource('src/assets/tileset/Modern tiles_Free/Characters_free/Amelia_phone_16x16.png'),
-    SpriteSheetBobPhone: new ImageSource('src/assets/tileset/Modern tiles_Free/Characters_free/Bob_phone_16x16.png'),
-    SpriteSheetAlexWalk: new ImageSource('src/assets/tileset/Modern tiles_Free/Characters_free/Alex_run_16x16.png'),
-    SpriteSheetAmeliaWalk: new ImageSource('src/assets/tileset/Modern tiles_Free/Characters_free/Amelia_run_16x16.png'),
-    SpriteSheetBobWalk: new ImageSource('src/assets/tileset/Modern tiles_Free/Characters_free/Bob_run_16x16.png'),
+    SpriteSheet: new ImageSource('images/Adam_run_16x16.png'),
+    SpriteSheetPlayer2: new ImageSource('images/Player2_run.png'),
+    SpriteSheetAlexPhone: new ImageSource('images/Alex_phone_16x16.png'),
+    SpriteSheetAmeliaPhone: new ImageSource('images/Amelia_phone_16x16.png'),
+    SpriteSheetBobPhone: new ImageSource('images/Characters_free/Bob_phone_16x16.png'),
+    SpriteSheetAlexWalk: new ImageSource('images/Alex_run_16x16.png'),
+    SpriteSheetAmeliaWalk: new ImageSource('images/Amelia_run_16x16.png'),
+    SpriteSheetBobWalk: new ImageSource('images/Bob_run_16x16.png'),
     StartScherm: new ImageSource('images/startscherm.png'),
     Gesnapt: new ImageSource('images/gesnapt.png'),
     Controls: new ImageSource('images/controls.png'),
-    ClassroomMap: new TiledResource('src/assets/maps/school2.tmx') 
+    ClassroomMap: new TiledResource('images/school2.tmx')
 };
 
 const ResourceLoader = new Loader([
@@ -34,7 +34,7 @@ const ResourceLoader = new Loader([
     Resources.StartScherm,
     Resources.Gesnapt,
     Resources.Controls,
-    Resources.SpriteSheetBobWalk 
+    Resources.SpriteSheetBobWalk
 ]);
 
 export { Resources, ResourceLoader };
