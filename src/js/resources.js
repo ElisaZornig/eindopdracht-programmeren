@@ -9,7 +9,7 @@ const Resources = {
     SpriteSheetPlayer2: new ImageSource('images/Player2_run.png'),
     SpriteSheetAlexPhone: new ImageSource('images/Alex_phone_16x16.png'),
     SpriteSheetAmeliaPhone: new ImageSource('images/Amelia_phone_16x16.png'),
-    SpriteSheetBobPhone: new ImageSource('images/Characters_free/Bob_phone_16x16.png'),
+    SpriteSheetBobPhone: new ImageSource('images/Bob_phone_16x16.png'),
     SpriteSheetAlexWalk: new ImageSource('images/Alex_run_16x16.png'),
     SpriteSheetAmeliaWalk: new ImageSource('images/Amelia_run_16x16.png'),
     SpriteSheetBobWalk: new ImageSource('images/Bob_run_16x16.png'),
