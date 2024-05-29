@@ -1,33 +1,16 @@
 import { Actor, Vector, Keys, CollisionType, SpriteSheet, Animation, range, Rectangle } from "excalibur";
 import { ResourceLoader, Resources } from './resources.js';
 import { UI } from "./staminaBar.js";
+import { Score } from "./score.js";
+import { Paper } from "./paper.js";
+import { Player } from "./player.js";
 
-export class Player extends Actor {
-    health = 100;
-    currentAnimation = null;
-
-    constructor() {
-        super({
-            width: 12,
-            height: 20,
-            collisionType: CollisionType.Active
-        });
-
-        this.direction = new Vector(0, 0); 
-        this.ui = new UI();
-        this.ui.scale = new Vector(0.3, 0.3);
-        this.ui.pos = new Vector(-30, -30);
-        this.ui.z = 7;
-        this.addChild(this.ui);
-
-        const customShape = new Rectangle(this.width, this.height - 10, new Vector(0, 5)); // Lower the center by 5 units
-        this.body.collider = customShape;
-
-    }
+export class Player2 extends Player {
 
     onInitialize(engine) {
+        // Define the sprite sheet
         const spriteSheet = SpriteSheet.fromImageSource({
-            image: Resources.SpriteSheet,
+            image: Resources.SpriteSheetPlayer2,
             grid: {
                 rows: 1,
                 columns: 24,
@@ -52,10 +35,10 @@ export class Player extends Actor {
 
     noMovementKeysHeld(engine) {
         return !(
-            engine.input.keyboard.isHeld(Keys.Up) ||
-            engine.input.keyboard.isHeld(Keys.Left) ||
-            engine.input.keyboard.isHeld(Keys.Down) ||
-            engine.input.keyboard.isHeld(Keys.Right)
+            engine.input.keyboard.isHeld(Keys.W) ||
+            engine.input.keyboard.isHeld(Keys.A) ||
+            engine.input.keyboard.isHeld(Keys.S) ||
+            engine.input.keyboard.isHeld(Keys.D)
         );
 
     }
@@ -64,13 +47,13 @@ export class Player extends Actor {
         let xspeed = 0;
         let yspeed = 0;
 
-        if (engine.input.keyboard.isHeld(Keys.Up)) {
+        if (engine.input.keyboard.isHeld(Keys.W)) {
             yspeed = -1.2;
             if (this.currentAnimation !== this.runAnimationTop) {
                 this.graphics.use(this.runAnimationTop);
                 this.currentAnimation = this.runAnimationTop;
             }
-        } else if (engine.input.keyboard.isHeld(Keys.Down)) {
+        } else if (engine.input.keyboard.isHeld(Keys.S)) {
             yspeed = 1.2;
             if (this.currentAnimation !== this.runAnimationDown) {
                 this.graphics.use(this.runAnimationDown);
@@ -80,13 +63,13 @@ export class Player extends Actor {
             yspeed = 0;
         }
 
-        if (engine.input.keyboard.isHeld(Keys.Right)) {
+        if (engine.input.keyboard.isHeld(Keys.D)) {
             xspeed = 1.2;
             if (this.currentAnimation !== this.runAnimationRight) {
                 this.graphics.use(this.runAnimationRight);
                 this.currentAnimation = this.runAnimationRight;
             }
-        } else if (engine.input.keyboard.isHeld(Keys.Left)) {
+        } else if (engine.input.keyboard.isHeld(Keys.A)) {
             xspeed = -1.2;
             if (this.currentAnimation !== this.runAnimationLeft) {
                 this.graphics.use(this.runAnimationLeft);
@@ -96,7 +79,7 @@ export class Player extends Actor {
             xspeed = 0;
         }
 
-        if (engine.input.keyboard.isHeld(Keys.ShiftRight)) {
+        if (engine.input.keyboard.isHeld(Keys.ShiftLeft)) {
 
             if (this.health < 0) {
                 this.health = -1;
@@ -138,5 +121,4 @@ export class Player extends Actor {
         const movementSpeed = 100; 
         this.vel = this.direction.scale(movementSpeed);
     }
-
 }

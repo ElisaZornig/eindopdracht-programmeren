@@ -1,31 +1,53 @@
-import '../css/style.css'
-import { Actor, Engine, Vector, DisplayMode } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
-import { Wall } from './wall.js'
-import { Player } from './player.js'
+import { Engine, DisplayMode, Scene, Label, TextAlign, Color, Input, Vector, Loader, ScaleTo, Random, Font, } from 'excalibur';
+import { Resources, ResourceLoader } from './resources.js';
+import { Player } from './player.js';
+import { NPC } from './students.js';
+import { TiledResource } from '@excaliburjs/plugin-tiled';
+
+import { IntroScene } from './IntroScene.js';
+import { MainGameScene } from './MainGameScene.js';
+import { EndScene } from './EndScene.js'
+import { ControlScene } from './ControlScene.js';
 
 export class Game extends Engine {
-
     constructor() {
         super({
-            width: 1280,
-            height: 700,
-            displayMode: DisplayMode.FitScreen
-        })
-        this.start(ResourceLoader).then(() => this.startGame())
+            width: window.innerWidth,
+            height: window.innerHeight,
+            antialiasing: false
+        });
+        this.start(ResourceLoader).then(() => this.showIntro());
+    }
+
+    showIntro() {
+
+        const introScene = new IntroScene(this);
+        this.addScene('intro', introScene);
+        this.goToScene('intro');
+    }
+
+    goToControlScene() {
+        const controlScene = new ControlScene(this)
+        this.addScene('controlscene', controlScene);
+        this.goToScene('controlscene');
 
     }
 
-    startGame() {
-        let background = new Actor();
-        background.graphics.use(Resources.Background.toSprite())
-        this.add(background)
-        console.log("start de game!")
-        const leftWall = new Wall(400, 200, 100, 100)
-        this.add(leftWall)
-        const player = new Player()
-        this.add(player)
+    goToMainGameScene() {
+        const mainScene = new MainGameScene(this);
+        this.addScene('main', mainScene);
+        this.goToScene('main');
+
     }
+    goToEndScene() {
+        const endScene = new EndScene(this);
+        this.addScene('end', endScene);
+        this.goToScene('end');
+    }
+
+
+
 }
 
-new Game()
+
+new Game();
