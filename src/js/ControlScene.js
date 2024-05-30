@@ -17,7 +17,7 @@ export class ControlScene extends Scene {
         const startScherm = new Actor()
         startScherm.graphics.use(Resources.Controls.toSprite())
         startScherm.pos = new Vector(this.game.drawWidth / 2, this.game.drawHeight / 2)
-        startScherm.scale = new Vector(0.9, 0.9)
+        startScherm.scale = new Vector(0.7, 0.7)
         this.add(startScherm);
         console.log("Control scene")
     }
