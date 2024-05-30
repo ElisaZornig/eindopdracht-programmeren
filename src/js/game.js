@@ -1,4 +1,4 @@
-import { Engine, DisplayMode, Scene, Label, TextAlign, Color, Input, Vector, Loader, ScaleTo, Random, Font, } from 'excalibur';
+import { Engine, DisplayMode, Scene, Label, TextAlign, Color, Input, Vector, Loader, ScaleTo, Random, Font, DisplayMode} from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js';
 import { Player } from './player.js';
 import { NPC } from './students.js';
@@ -12,8 +12,9 @@ import { ControlScene } from './ControlScene.js';
 export class Game extends Engine {
     constructor() {
         super({
-            width: window.innerWidth,
-            height: window.innerHeight,
+            width: 600,
+            height: 400,
+            displayMode: DisplayMode.FitScreen
             antialiasing: false
         });
         this.start(ResourceLoader).then(() => this.showIntro());
